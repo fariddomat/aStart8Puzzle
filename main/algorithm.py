@@ -206,10 +206,20 @@ empty_tile_posi = [ 1, 2 ]
 def searchAlgorithm(start, goal):
    global data
    data=""
-   # initial[3][3]
-   initial = np.reshape(start, (-1, 3))
-   final = np.reshape(goal, (-1, 3))
-   solve(initial, empty_tile_posi, final)  
-   # print(data)
+   # print(sorted(start))
+   if(sorted(start)!=['-','1','2','3','4','5','6','7','8']):
+      data="Start: Input all unqiue numbers from 1 to 8 in any order with a - in between."
+      return data
+   elif(sorted(goal)!=['-', '1','2','3','4','5','6','7','8']):
+      data="Goal: Input all unqiue numbers from 1 to 8 in any order with a - in between."
+      return data
+   else:
+      initial = np.reshape(start, (-1, 3))
+      final = np.reshape(goal, (-1, 3))
+      try:
+         solve(initial, empty_tile_posi, final)
+      except:  
+         data="Input Error !!!"
+      
 
    return data
